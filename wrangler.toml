@@ -1,0 +1,11 @@
+name = "discords-fab-blog"
+compatibility_date = "2025-07-28"
+
+[build]
+# サブモジュールを pull してからビルド
+command = "git submodule update --init --recursive && hugo --gc --minify"
+
+[assets] # Hugo の出力先 (= 配信対象)
+directory = "./public"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

@@ -1,14 +1,21 @@
-name = "discords-fab-blog"
-compatibility_date = "2025-07-28"
+# === Worker metadata =========================================================
+name              = "discords-fab-blog"
+main              = "./_worker.js"           # 静的配信だけなら stub で OK
+compatibility_date = "2025-07-31"
+
+# === Routing =================================================================
+# GitHub 連携ビルド後に Cloudflare が自動でこのルートへ発行します
 routes = [
-  { pattern = "fab-blog.discord.jp", custom_domain = true }
+  { pattern = "fab-blog.discord.jp/*", custom_domain = true }  # ワイルドカード必須
 ]
 
+# === Build step (Runs inside Workers Builds container) =======================
 [build]
-# サブモジュールを pull してからビルド
-command = "git submodule update --init --recursive && hugo --gc --minify"
+command = "git submodule update --init --recursive && hugo --gc --minify --baseURL=https://fab-blog.discord.jp"
 
-[assets] # Hugo の出力先 (= 配信対象)
-directory = "./public"
-html_handling = "auto-trailing-slash"
-not_found_handling = "404-page"
+# === Static-assets config ====================================================
+[assets]
+directory          = "./public"              # Hugo の出力先
+binding            = "ASSETS"               # Worker から fetch したい場合に使う
+html_handling      = "auto-trailing-slash"   # 末尾スラッシュを自動補完
+not_found_handling = "404-page"              # ./public/404.html を返す

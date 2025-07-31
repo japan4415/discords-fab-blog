@@ -1,5 +1,8 @@
 name = "discords-fab-blog"
 compatibility_date = "2025-07-28"
+routes = [
+  { pattern = "fab-blog.discord.jp", custom_domain = true }
+]
 
 [build]
 # サブモジュールを pull してからビルド

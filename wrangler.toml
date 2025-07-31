@@ -6,7 +6,7 @@ compatibility_date = "2025-07-31"
 # === Routing =================================================================
 # GitHub 連携ビルド後に Cloudflare が自動でこのルートへ発行します
 routes = [
-  { pattern = "fab-blog.discord.jp/*", custom_domain = true }  # ワイルドカード必須
+  { pattern = "fab-blog.discord.jp", custom_domain = true }
 ]
 
 # === Build step (Runs inside Workers Builds container) =======================

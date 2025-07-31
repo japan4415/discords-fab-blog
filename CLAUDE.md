@@ -10,6 +10,6 @@
 
 #### カード名記法
 日本語名がある場合
-<< 日本語名 / English Name >>
+`[<< 日本語名 / English Name >>](cardpage_url)`
 日本語名がない場合
-<< English Name >>
+`[<< English Name >>](cardpage_url)`
